@@ -16,6 +16,8 @@ namespace TuneinCrew
         
         private string _fmodLocation;
 
+        private string _prefix;
+
         public XMLToMod(string file)
         {
             _file = file;
@@ -44,6 +46,8 @@ namespace TuneinCrew
                 Console.WriteLine("ERR3: fmod file not found.");
                 return;
             }
+            
+            _prefix = XMLUtil.GetNodeValue(projectRoot, "prefix");
             
             //We're not going to run the tool if the radio count inside the XML is 0.
             if (!projectRoot.Elements("radio").Any())
@@ -106,12 +110,23 @@ namespace TuneinCrew
             {
                 Console.WriteLine($"Using existing FDP found at {fdpLocation}. Delete the file and re-run this tool to generate a new one.");
             }
+
+            string fmodArgs = $"-pc {Path.GetFullPath(fdpLocation)}";
+            //For linux
+            if (!string.IsNullOrWhiteSpace(_prefix))
+            {
+                //Ask since FMOD Designer only works with windows pointers to files.
+                Console.WriteLine($"Enter the wine path where file {Path.GetFullPath(fdpLocation)} is located (W:/C/file.fdp for example).");
+                string drive = Console.ReadLine();
+                fmodArgs = $"\"{_fmodLocation}\" -pc {drive}";
+                _fmodLocation = _prefix;
+            }
             
             //Generate the actual fev and fsb
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = _fmodLocation,
-                Arguments = $"-pc {Path.GetFullPath(fdpLocation)}",
+                Arguments = fmodArgs,
                 UseShellExecute = true,
             };
 

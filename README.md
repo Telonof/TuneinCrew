@@ -10,6 +10,8 @@ Requires both .NET Core 8.X and FMOD Designer 2010 to be installed, this tool ha
 
 2. Follow the guide found here to make a valid XML file for TuneinCrew.
 
-3. Head into cmd.exe and call TuneinCrew.exe with an argument towards your XML file or just drag and drop the XML onto the exe.
+3. Head into the terminal and call TuneinCrew with an argument towards your XML file or just drag and drop the XML onto the exe in Windows.
+
+> If on Linux: When it asks for the location of the FDP file inside a wine drive, provide the path wine would use to get to that FDP file. For example, if it is located at /home/user/project/Radio_AAAA.fdp and in your wine prefix /home/user is mounted to D, then write D:/project/Radio_AAAA.fdp.
 
 4. Take the .zip file generated where the XML is located and install it as a mod in PitCrew.
