@@ -1,0 +1,54 @@
+<waveform>
+	<filename />
+	<guid />
+	<mindistance>1</mindistance>
+	<maxdistance>10000</maxdistance>
+	<deffreq>44100</deffreq>
+	<defvol>1</defvol>
+	<defpan>0</defpan>
+	<defpri>128</defpri>
+	<xmafiltering>0</xmafiltering>
+	<channelmode>0</channelmode>
+	<quality_crossplatform>0</quality_crossplatform>
+	<quality>-1</quality>
+	<_PC_resamplemode>1</_PC_resamplemode>
+	<_PC_optimisedratereduction>100</_PC_optimisedratereduction>
+	<_PC_fixedsamplerate>48000</_PC_fixedsamplerate>
+	<_XBOX360_resamplemode>1</_XBOX360_resamplemode>
+	<_XBOX360_optimisedratereduction>100</_XBOX360_optimisedratereduction>
+	<_XBOX360_fixedsamplerate>48000</_XBOX360_fixedsamplerate>
+	<_XBOXONE_resamplemode>1</_XBOXONE_resamplemode>
+	<_XBOXONE_optimisedratereduction>100</_XBOXONE_optimisedratereduction>
+	<_XBOXONE_fixedsamplerate>48000</_XBOXONE_fixedsamplerate>
+	<_PSP_resamplemode>1</_PSP_resamplemode>
+	<_PSP_optimisedratereduction>100</_PSP_optimisedratereduction>
+	<_PSP_fixedsamplerate>48000</_PSP_fixedsamplerate>
+	<_PS3_resamplemode>1</_PS3_resamplemode>
+	<_PS3_optimisedratereduction>100</_PS3_optimisedratereduction>
+	<_PS3_fixedsamplerate>48000</_PS3_fixedsamplerate>
+	<_PS4_resamplemode>1</_PS4_resamplemode>
+	<_PS4_optimisedratereduction>100</_PS4_optimisedratereduction>
+	<_PS4_fixedsamplerate>48000</_PS4_fixedsamplerate>
+	<_WII_resamplemode>1</_WII_resamplemode>
+	<_WII_optimisedratereduction>100</_WII_optimisedratereduction>
+	<_WII_fixedsamplerate>48000</_WII_fixedsamplerate>
+	<_WiiU_resamplemode>1</_WiiU_resamplemode>
+	<_WiiU_optimisedratereduction>100</_WiiU_optimisedratereduction>
+	<_WiiU_fixedsamplerate>48000</_WiiU_fixedsamplerate>
+	<_3DS_resamplemode>1</_3DS_resamplemode>
+	<_3DS_optimisedratereduction>100</_3DS_optimisedratereduction>
+	<_3DS_fixedsamplerate>48000</_3DS_fixedsamplerate>
+	<_NGP_resamplemode>1</_NGP_resamplemode>
+	<_NGP_optimisedratereduction>100</_NGP_optimisedratereduction>
+	<_NGP_fixedsamplerate>48000</_NGP_fixedsamplerate>
+	<_ANDROID_resamplemode>1</_ANDROID_resamplemode>
+	<_ANDROID_optimisedratereduction>100</_ANDROID_optimisedratereduction>
+	<_ANDROID_fixedsamplerate>48000</_ANDROID_fixedsamplerate>
+	<_IOS_resamplemode>1</_IOS_resamplemode>
+	<_IOS_optimisedratereduction>100</_IOS_optimisedratereduction>
+	<_IOS_fixedsamplerate>48000</_IOS_fixedsamplerate>
+	<_BB10_resamplemode>1</_BB10_resamplemode>
+	<_BB10_optimisedratereduction>100</_BB10_optimisedratereduction>
+	<_BB10_fixedsamplerate>48000</_BB10_fixedsamplerate>
+	<notes/>
+</waveform>

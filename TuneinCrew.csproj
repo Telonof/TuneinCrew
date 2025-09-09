@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Gibbed.Dunia2\Gibbed.Dunia2.FileFormats\Gibbed.Dunia2.FileFormats.csproj" />
+	  
+    <None Include="Assets\**\*.*">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	  
+    <Compile Remove="Gibbed.Dunia2\**" />
+    <EmbeddedResource Remove="Gibbed.Dunia2\**" />
+    <None Remove="Gibbed.Dunia2\**" />
+  </ItemGroup>
+
+</Project>

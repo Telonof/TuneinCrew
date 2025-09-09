@@ -1,0 +1,11 @@
+<object hash="3348ED10" name="ItemsElement">
+	<object hash="C922AA7D" name="ItemsValue">
+		<field hash="25368426" name="hid_DTCTH_ClassName" value-ComputeHash32="CRadioTrackIDDetails" type="BinHex">669A5A0D</field>
+		<field hash="BF298A20" name="Item" type="BinHex" />
+		<field hash="B5D4E0E4" name="TrackName" type="BinHex" />
+		<field hash="24224EA3" name="ArtistName" type="BinHex" />
+		<field hash="F8594147" name="Album" type="BinHex" />
+		<field hash="1BB0DC09" name="Year" type="BinHex" />
+		<field hash="06D19B84" name="Length" type="BinHex" />
+	</object>
+</object>

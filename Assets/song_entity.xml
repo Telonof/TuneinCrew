@@ -1,0 +1,14 @@
+<object hash="0984415E" name="Entity">
+	<field hash="11D3633A" name="ID" type="BinHex" />
+	<field hash="07F184FD" name="FatherArchetypeID" type="BinHex">629B8D0700000000</field>
+	<field hash="0C851404" name="SpawnPolicy" type="BinHex">06000000</field>
+	<object hash="A115F62D" name="Components">
+		<object hash="4ABE0321" name="CITEntityComponentAudioSource">
+			<object hash="58267A45" name="Source">
+				<field hash="25368426" name="hid_DTCTH_ClassName" value-ComputeHash32="CAudioEvent" type="BinHex">40EC0160</field>
+				<field hash="FAF0A500" name="ProjectPathId" type="BinHex" />
+				<field hash="20448FB2" name="EventName" type="BinHex" />
+			</object>
+		</object>
+	</object>
+</object>

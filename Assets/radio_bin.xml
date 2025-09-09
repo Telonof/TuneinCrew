@@ -1,0 +1,24 @@
+<root file="project/road66/generated/zones/gameplayzonechicagoregion.entities.bin">
+	<add depth="1:22">
+		<object hash="D34452F5" name="RadioStationsElement">
+			<object hash="49837C94" name="RadioStationsValue">
+				<field hash="25368426" name="hid_DTCTH_ClassName" value-ComputeHash32="CRadioStation" type="BinHex">3D09C6A2</field>
+				<field hash="FE11D138" name="Name" type="BinHex" />
+				<field hash="CCF6E35A" name="NameId" type="BinHex">CE0F0000</field>
+				<field hash="55ABF95F" name="UserSelected" type="BinHex">00</field>
+				<field hash="28470FBF" name="ShuffleAll" type="BinHex">00</field>
+				<field hash="44BC352D" name="Logo" type="BinHex">FFFFFFFFFFFFFFFF</field>
+				<field hash="6A28C3A6" name="GameplayZone" value-Id64="48533856" type="BinHex">6091E40200000000</field>
+				<field hash="E9D2717C" name="Jingle" type="BinHex">FFFFFFFFFFFFFFFF</field>
+				<object hash="3511323F" name="Sequences">
+					<object hash="0311A219" name="SequencesElement">
+						<object hash="1A3063BC" name="SequencesValue">
+							<field hash="25368426" name="hid_DTCTH_ClassName" value-ComputeHash32="CRadioSequence" type="BinHex">D1E7B5B6</field>
+							<object hash="20DFC649" name="Items" />
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</add>
+</root>

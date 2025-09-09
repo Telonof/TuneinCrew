@@ -1,0 +1,39 @@
+<sounddef>
+	<name />
+	<guid />
+	<type>randomnorepeat</type>
+	<playlistmode>0</playlistmode>
+	<randomrepeatsounds>0</randomrepeatsounds>
+	<randomrepeatsilences>0</randomrepeatsilences>
+	<shuffleglobal>0</shuffleglobal>
+	<sequentialrememberposition>0</sequentialrememberposition>
+	<sequentialglobal>0</sequentialglobal>
+	<spawntime_min>0</spawntime_min>
+	<spawntime_max>0</spawntime_max>
+	<spawn_max>1</spawn_max>
+	<mode>0</mode>
+	<pitch>0</pitch>
+	<pitch_randmethod>1</pitch_randmethod>
+	<pitch_random_min>0</pitch_random_min>
+	<pitch_random_max>0</pitch_random_max>
+	<pitch_randomization>0</pitch_randomization>
+	<pitch_recalculate>0</pitch_recalculate>
+	<volume_db>0</volume_db>
+	<volume_randmethod>1</volume_randmethod>
+	<volume_random_min>0</volume_random_min>
+	<volume_random_max>0</volume_random_max>
+	<volume_randomization>0</volume_randomization>
+	<position_randomization_min>0</position_randomization_min>
+	<position_randomization>0</position_randomization>
+	<trigger_delay_min>0</trigger_delay_min>
+	<trigger_delay_max>0</trigger_delay_max>
+	<spawncount>0</spawncount>
+	<notes/>
+	<entrylistmode>1</entrylistmode>
+	<waveform>
+		<filename />
+		<soundbankname />
+		<weight>100</weight>
+		<percentagelocked>0</percentagelocked>
+	</waveform>
+</sounddef>
