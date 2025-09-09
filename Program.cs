@@ -16,6 +16,9 @@
                 return;
             }
 
+            //For drag-and-drop files
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(Environment.ProcessPath));
+
             new XMLToMod(args[0]).Run();
         }
     }
