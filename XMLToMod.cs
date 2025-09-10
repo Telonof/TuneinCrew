@@ -235,7 +235,7 @@ namespace TuneinCrew
                 string force = (80.0 / 300.0).ToString("F6");
                 string forceValue = XMLUtil.GetNodeValue(songElement, "force");
                 if (forceValue != null && !string.IsNullOrWhiteSpace(forceValue))
-                    force = (double.Parse(forceValue) / 300.0).ToString("F6");
+                    force = (Math.Min(300.0, double.Parse(forceValue)) / 300.0).ToString("F6");
 
                 //Formatted <#/300>,<#/1>,0,1 and there's two. Second point is what we need.
                 area = customs.Root.Element("layer").Descendants("envelope").FirstOrDefault(node => (string)node.Element("name") == "env011");
