@@ -79,7 +79,6 @@ namespace TuneinCrew
                 return;
             }
 
-            id = id.ToUpper();
             string radioName = $"Radio_{id}";
             string fdpLocation = Path.Combine(_projectDirectory, Path.ChangeExtension(radioName, ".fdp"));
 
