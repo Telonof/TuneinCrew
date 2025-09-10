@@ -40,7 +40,7 @@ namespace TuneinCrew
             }
 
             //Grab the fmod executable location to then use to create FSBs.
-            _fmodLocation = XMLUtil.GetNodeValue(projectRoot, "fmod");
+            _fmodLocation = FindAbsolutePath(XMLUtil.GetNodeValue(projectRoot, "fmod"));
             if (_fmodLocation == null || string.IsNullOrWhiteSpace(_fmodLocation) || !File.Exists(_fmodLocation))
             {
                 Console.WriteLine("ERR3: fmod file not found.");
@@ -197,7 +197,7 @@ namespace TuneinCrew
             {
                 XElement songElement = songsElement.Elements("song").ElementAtOrDefault(i);
 
-                string songFileName = XMLUtil.GetNodeValue(songElement, "file");
+                string songFileName = FindAbsolutePath(XMLUtil.GetNodeValue(songElement, "file"));
 
                 if (songFileName == null || !File.Exists(songFileName))
                 {
@@ -253,7 +253,7 @@ namespace TuneinCrew
 
         private void GenerateLogo(XElement element, string radioName, XElement radioBin)
         {
-            string logoPath = XMLUtil.GetNodeValue(element, "logo");
+            string logoPath = FindAbsolutePath(XMLUtil.GetNodeValue(element, "logo"));
 
             if (logoPath == null || !File.Exists(logoPath))
             {
@@ -397,6 +397,17 @@ namespace TuneinCrew
             ulong hash = CRC64.Hash(data.ToLower(), true);
             byte[] bytes = BitConverter.GetBytes(hash);
             return BitConverter.ToString(bytes).Replace("-", "");
+        }
+
+        private string? FindAbsolutePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                return path;
+
+            if (Path.IsPathRooted(path))
+                return path;
+
+            return Path.Combine(_projectDirectory, path);
         }
     }
 }
