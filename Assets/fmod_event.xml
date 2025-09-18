@@ -18,7 +18,7 @@
 			<x>0</x>
 			<width>1</width>
 			<startmode>0</startmode>
-			<loopmode>0</loopmode>
+			<loopmode>1</loopmode>
 			<loopcount2>-1</loopcount2>
 			<autopitchenabled>0</autopitchenabled>
 			<autopitchparameter>0</autopitchparameter>
@@ -200,7 +200,7 @@
 	<pitch_randomization_units>Octaves</pitch_randomization_units>
 	<volume_randomization>0</volume_randomization>
 	<priority>128</priority>
-	<maxplaybacks>1</maxplaybacks>
+	<maxplaybacks>5</maxplaybacks>
 	<maxplaybacks_behavior>Steal_oldest</maxplaybacks_behavior>
 	<stealpriority>10000</stealpriority>
 	<mode>x_2d</mode>
@@ -211,7 +211,7 @@
 	<auto_distance_filtering>Off</auto_distance_filtering>
 	<distance_filter_centre_freq>1500</distance_filter_centre_freq>
 	<headrelative>World_relative</headrelative>
-	<oneshot>No</oneshot>
+	<oneshot>Yes</oneshot>
 	<istemplate>No</istemplate>
 	<usetemplate>Default</usetemplate>
 	<notes/>
