@@ -1,0 +1,8 @@
+<root file="localization">
+    <add depth="root">
+        <object hash="29D6A3E8">
+            <field hash="29D6A3E8" type="BinHex"></field>
+            <field hash="BF396750" type="BinHex"></field>
+        </object>
+    </add>
+</root>

@@ -1,4 +1,6 @@
-﻿namespace TuneinCrew
+﻿using TuneinCrew.Utilities;
+
+namespace TuneinCrew
 {
     internal class Program
     {
@@ -12,14 +14,14 @@
 
             if (!File.Exists(args[0]))
             {
-                Console.WriteLine("ERR1: Radio XML cannot be found.");
+                Logger.Error("Radio XML cannot be found.");
                 return;
             }
 
             //For drag-and-drop files
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Environment.ProcessPath));
 
-            new XMLToMod(args[0]).Run();
+            new ProjectToMod(args[0], "Assets").Run();
         }
     }
 }

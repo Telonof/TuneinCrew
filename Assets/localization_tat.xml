@@ -1,0 +1,11 @@
+<root file="localization/tat.localization.bin">
+    <add depth="root">
+        <object hash="29D6A3E8">
+            <field hash="4AF2B3F3" type="BinHex">63000000</field>
+            <field hash="BF396750" type="BinHex"></field>
+        </object>
+    </add>
+    <edit depth="root">
+        <field hash="1855B0EF" type="BinHex">64000000</field>
+    </edit>
+</root>

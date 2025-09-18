@@ -1,9 +1,22 @@
-﻿using System.Xml.Linq;
+﻿using System.Xml;
+using System.Xml.Linq;
 
 namespace TuneinCrew.Utilities
 {
     internal class XMLUtil
     {
+        public static XElement? LoadAndValidateXML(string file)
+        {
+            try
+            {
+                return  XDocument.Load(file).Root;
+            }
+            catch (XmlException e)
+            {
+                return null;
+            }
+        }
+
         public static string? GetNodeValue(XElement parent, string elementName)
         {
             return parent.Element(elementName)?.Value;
