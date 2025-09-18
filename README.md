@@ -1,5 +1,5 @@
 # TuneinCrew
-A semi-automatic command line radio creator for The Crew.
+A semi-automatic CLI radio creator for The Crew.
 
 This tool is designed to read an XML file, and using FMOD Designer 2010, take that data and convert it into a mod that be can installed in a local instance of [PitCrew](https://github.com/Telonof/PitCrew).
 
@@ -15,3 +15,7 @@ Requires both .NET Core 8.X and FMOD Designer 2010 to be installed, this tool ha
 > If on Linux: When it asks for the location of the FDP file inside a wine drive, provide the path wine would use to get to that FDP file. For example, if it is located at /home/user/project/Radio_AAAA.fdp and in your wine prefix /home/user is mounted to D in dosdrives, then write D:/project/Radio_AAAA.fdp.
 
 4. Take the .zip file generated where the XML is located and install it as a mod in PitCrew.
+
+## Credits
+
+A massive thank you goes to **Guki92** for figuring out and implementing radio stations into the game, and also with testing this tool for many hours catching a lot of my mistakes.
