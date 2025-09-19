@@ -94,7 +94,7 @@ namespace TuneinCrew.Tools
 
         public static void Build(string fdpLocation, string fileName, string projectDirectory, string prefix, string fmodLocation, string assetsDirectory)
         {
-            string fmodArgs = $"-pc {Path.GetFullPath(fdpLocation)}";
+            string fmodArgs = $"-pc \"{Path.GetFullPath(fdpLocation)}\"";
 
             File.Copy(Path.Combine(assetsDirectory, "template.fdt"), Path.Combine(projectDirectory, "template.fdt"), true);
 
