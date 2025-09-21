@@ -60,23 +60,21 @@ namespace TuneinCrew.Tools
 
         public static void AddSongsAndJingles(Radio radio, Song song, int songNumber, XElement radioBinary, XElement songBinary, string assetsDirectory)
         {
-            string uniqueName = $"{radio.Id}_Jn";
+            string uniqueName = $"{radio.Id}_zz";
             string eventName = "Jingle";
-
-            //Allow up to 65k song ids by converting the int to ASCII representations of its hex.
-            //No sane person should really be going over 1000 for one radio station.
-            if (songNumber != -1)
-            {
-                byte[] bytes = BitConverter.GetBytes((ushort)songNumber);
-                uniqueName = $"{radio.Id}_{Encoding.ASCII.GetString(bytes)}";
-
-                eventName = songNumber.ToString("D2");
-            }
 
             //Reverse the ID since the binary tool prints them to the file backwards.
             char[] charArray = uniqueName.ToCharArray();
             Array.Reverse(charArray);
             uniqueName = StringUtil.ConvertToHexString(new string(charArray));
+
+            //Allow up to 31k song ids by allowing uint16's in the ids.
+            //No sane person should really be going over 1000 for one radio station.
+            if (songNumber != -1)
+            {
+                eventName = songNumber.ToString("D2");
+                uniqueName = songNumber.ToString("X4") + uniqueName.Substring(4);
+            }
 
             //Add song entity.
             XDocument doc = XDocument.Load(Path.Combine(assetsDirectory, "song_entity.xml"));
