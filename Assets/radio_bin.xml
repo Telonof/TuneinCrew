@@ -8,7 +8,6 @@
 				<field hash="55ABF95F" name="UserSelected" type="BinHex">00</field>
 				<field hash="28470FBF" name="ShuffleAll" type="BinHex">00</field>
 				<field hash="44BC352D" name="Logo" type="BinHex">FFFFFFFFFFFFFFFF</field>
-				<field hash="6A28C3A6" name="GameplayZone" value-Id64="48533856" type="BinHex">6091E40200000000</field>
 				<field hash="E9D2717C" name="Jingle" type="BinHex">FFFFFFFFFFFFFFFF</field>
 				<object hash="3511323F" name="Sequences">
 					<object hash="0311A219" name="SequencesElement">

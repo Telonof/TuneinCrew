@@ -11,7 +11,7 @@ namespace TuneinCrew.Utilities
 
             if (localization)
             {
-                byte[] stringWithNulls = new byte[(bytes.Length * 2) + 3];
+                byte[] stringWithNulls = new byte[(bytes.Length * 2) + 2];
                 for (int i = 0; i < bytes.Length; i++)
                 {
                     stringWithNulls[i * 2] = bytes[i];
