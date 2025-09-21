@@ -100,12 +100,12 @@ namespace TuneinCrew
             //For every song existing, add an entity to the game and add a listing to the radio entity.
             for (int i = 1; i <= radio.Songs.Count(); i++)
             {
-                XMLGenerator.AddSongsAndJingles(radio, radio.Songs[i - 1], i.ToString("D2"), radioBin.Root, songBin.Root.Element("add"), _assetsDirectory);
+                XMLGenerator.AddSongsAndJingles(radio, radio.Songs[i - 1], i, radioBin.Root, songBin.Root.Element("add"), _assetsDirectory);
             }
 
             //Now if jingles were added to the FDP file, also add them to the entity and radio list.
             if (jinglesUsed)
-                XMLGenerator.AddSongsAndJingles(radio, null, "Jingle", radioBin.Root, songBin.Root.Element("add"), _assetsDirectory, true);
+                XMLGenerator.AddSongsAndJingles(radio, null, -1, radioBin.Root, songBin.Root.Element("add"), _assetsDirectory);
 
             //All files have been made, cleanup and package into an installable PitCrew mod.
             songBin.Save(Path.Combine(_tempModDirectory, $"{radio.InternalRadioName}_songs.xml"));

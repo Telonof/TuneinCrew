@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Text;
 using System.Xml.Linq;
 using TuneinCrew.Utilities;
 
@@ -58,9 +58,20 @@ namespace TuneinCrew.Tools
             return songBinary;
         }
 
-        public static void AddSongsAndJingles(Radio radio, Song song, string eventName, XElement radioBinary, XElement songBinary, string assetsDirectory, bool jingles = false)
+        public static void AddSongsAndJingles(Radio radio, Song song, int songNumber, XElement radioBinary, XElement songBinary, string assetsDirectory)
         {
-            string uniqueName = $"{radio.Id}_{eventName.Substring(0, 2)}";
+            string uniqueName = $"{radio.Id}_Jn";
+            string eventName = "Jingle";
+
+            //Allow up to 65k song ids by converting the int to ASCII representations of its hex.
+            //No sane person should really be going over 1000 for one radio station.
+            if (songNumber != -1)
+            {
+                byte[] bytes = BitConverter.GetBytes((ushort)songNumber);
+                uniqueName = $"{radio.Id}_{Encoding.ASCII.GetString(bytes)}";
+
+                eventName = songNumber.ToString("D2");
+            }
 
             //Reverse the ID since the binary tool prints them to the file backwards.
             char[] charArray = uniqueName.ToCharArray();
@@ -79,7 +90,7 @@ namespace TuneinCrew.Tools
             field = XMLUtil.FindType(doc.Root, "field", "name", "ProjectPathId");
             field.Value = StringUtil.Hash($"sound\\{radio.InternalRadioName}.fev");
 
-            if (jingles)
+            if (songNumber == -1)
             {
                 field = XMLUtil.FindType(doc.Root, "field", "name", "FatherArchetypeID");
                 field.Value = "1D45840700000000";
