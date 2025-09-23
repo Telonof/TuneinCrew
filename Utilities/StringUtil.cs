@@ -7,7 +7,7 @@ namespace TuneinCrew.Utilities
     {
         public static string ConvertToHexString(string text, int resize = 8, bool localization = false)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(text);
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
 
             if (localization)
             {
