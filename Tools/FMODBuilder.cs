@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Xml.Linq;
 using TuneinCrew.Utilities;
 
@@ -52,7 +53,7 @@ namespace TuneinCrew.Tools
                 area.SetElementValue("name", $"/{Path.GetFileNameWithoutExtension(radio.Songs[i].Path)}");
 
                 //Setup full force trigger
-                string force = Math.Min(300.0, (double)radio.Songs[i].Force / 300.0).ToString("F6");
+                string force = Math.Min(300.0, (double)radio.Songs[i].Force / 300.0).ToString("F6", CultureInfo.InvariantCulture);
 
                 //Formatted <#/300>,<#/1>,0,1 and there's two. Second one is what we need.
                 area = customs.Root.Element("layer").Descendants("envelope").FirstOrDefault(node => (string)node.Element("name") == "env011");
