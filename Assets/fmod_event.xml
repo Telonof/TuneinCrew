@@ -1,6 +1,6 @@
 <event>
-	<name />
-	<guid />
+	<name/>
+	<guid/>
 	<parameter_nextid>3</parameter_nextid>
 	<layer_nextid>7</layer_nextid>
 	<layer>
@@ -14,7 +14,7 @@
 		<priority>-1</priority>
 		<controlparameter>ZoomLevel</controlparameter>
 		<sound>
-			<name />
+			<name/>
 			<x>0</x>
 			<width>1</width>
 			<startmode>0</startmode>
@@ -31,11 +31,11 @@
 		</sound>
 		<envelope>
 			<name>env009</name>
-			<dsp_name>FMOD Highpass</dsp_name>
+			<dsp_name>FMOD Highpass Simple</dsp_name>
 			<dsp_paramindex>0</dsp_paramindex>
 			<colour>#ff00ff</colour>
 			<point>0,0,1,1</point>
-			<point>0.99773,0.750643,0,1</point>
+			<point>1,0.750643,0,1</point>
 			<parametername>ZoomLevel</parametername>
 			<controlparameter>ZoomLevel</controlparameter>
 			<_PC_enable>1</_PC_enable>
@@ -54,48 +54,18 @@
 			<mute>0</mute>
 			<visible>1</visible>
 			<hidden>0</hidden>
-			<fromtemplate>Yes</fromtemplate>
+			<fromtemplate>No</fromtemplate>
 			<mappingmethod>1</mappingmethod>
-			<flags>0</flags>
-			<exflags>0</exflags>
-		</envelope>
-		<envelope>
-			<name>env010</name>
-			<dsp_name>FMOD Highpass</dsp_name>
-			<dsp_paramindex>1</dsp_paramindex>
-			<colour>#8000ff</colour>
-			<parentname>env009</parentname>
-			<point>0,0,1,1</point>
-			<parametername>ZoomLevel</parametername>
-			<controlparameter>ZoomLevel</controlparameter>
-			<_PC_enable>1</_PC_enable>
-			<_XBOX360_enable>1</_XBOX360_enable>
-			<_XBOXONE_enable>1</_XBOXONE_enable>
-			<_PSP_enable>1</_PSP_enable>
-			<_PS3_enable>1</_PS3_enable>
-			<_PS4_enable>1</_PS4_enable>
-			<_WII_enable>1</_WII_enable>
-			<_WiiU_enable>1</_WiiU_enable>
-			<_3DS_enable>1</_3DS_enable>
-			<_NGP_enable>1</_NGP_enable>
-			<_ANDROID_enable>1</_ANDROID_enable>
-			<_IOS_enable>1</_IOS_enable>
-			<_BB10_enable>1</_BB10_enable>
-			<mute>0</mute>
-			<visible>1</visible>
-			<hidden>1</hidden>
-			<fromtemplate>Yes</fromtemplate>
-			<mappingmethod>0</mappingmethod>
 			<flags>0</flags>
 			<exflags>0</exflags>
 		</envelope>
 		<envelope>
 			<name>env011</name>
-			<dsp_name>FMOD Highpass</dsp_name>
+			<dsp_name>FMOD Highpass Simple</dsp_name>
 			<dsp_paramindex>0</dsp_paramindex>
 			<colour>#ff00ff</colour>
-			<point>0,0.612117,1,1</point>
-			<point>0.267532,0,0,1</point>
+			<point>0,0.6,1,1</point>
+			<point>0.266667,0,0,1</point>
 			<parametername>PlayerVehicleVelocity</parametername>
 			<controlparameter>PlayerVehicleVelocity</controlparameter>
 			<_PC_enable>1</_PC_enable>
@@ -114,38 +84,8 @@
 			<mute>0</mute>
 			<visible>1</visible>
 			<hidden>0</hidden>
-			<fromtemplate>Yes</fromtemplate>
+			<fromtemplate>No</fromtemplate>
 			<mappingmethod>1</mappingmethod>
-			<flags>0</flags>
-			<exflags>0</exflags>
-		</envelope>
-		<envelope>
-			<name>env012</name>
-			<dsp_name>FMOD Highpass</dsp_name>
-			<dsp_paramindex>1</dsp_paramindex>
-			<colour>#8000ff</colour>
-			<parentname>env011</parentname>
-			<point>0,0,1,1</point>
-			<parametername>PlayerVehicleVelocity</parametername>
-			<controlparameter>PlayerVehicleVelocity</controlparameter>
-			<_PC_enable>1</_PC_enable>
-			<_XBOX360_enable>1</_XBOX360_enable>
-			<_XBOXONE_enable>1</_XBOXONE_enable>
-			<_PSP_enable>1</_PSP_enable>
-			<_PS3_enable>1</_PS3_enable>
-			<_PS4_enable>1</_PS4_enable>
-			<_WII_enable>1</_WII_enable>
-			<_WiiU_enable>1</_WiiU_enable>
-			<_3DS_enable>1</_3DS_enable>
-			<_NGP_enable>1</_NGP_enable>
-			<_ANDROID_enable>1</_ANDROID_enable>
-			<_IOS_enable>1</_IOS_enable>
-			<_BB10_enable>1</_BB10_enable>
-			<mute>0</mute>
-			<visible>1</visible>
-			<hidden>1</hidden>
-			<fromtemplate>Yes</fromtemplate>
-			<mappingmethod>0</mappingmethod>
 			<flags>0</flags>
 			<exflags>0</exflags>
 		</envelope>

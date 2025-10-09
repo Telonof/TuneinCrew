@@ -97,8 +97,6 @@ namespace TuneinCrew.Tools
         {
             string fmodArgs = $"-pc \"{Path.GetFullPath(fdpLocation)}\"";
 
-            File.Copy(Path.Combine(assetsDirectory, "template.fdt"), Path.Combine(projectDirectory, "template.fdt"), true);
-
             //For linux
             if (!string.IsNullOrWhiteSpace(prefix))
             {

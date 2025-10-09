@@ -15,8 +15,6 @@
 	<currentlanguage>default</currentlanguage>
 	<primarylanguage>default</primarylanguage>
 	<language>default</language>
-	<templatefilename>template.fdt</templatefilename>
-	<templatefileopen>1</templatefileopen>
 	<eventcategory>
 		<name>music</name>
 		<guid>{588797e7-993b-4051-b276-c7ce7351b4ac}</guid>

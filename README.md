@@ -19,3 +19,5 @@ Requires both .NET Core 8.X and FMOD Designer 2010 to be installed, this tool ha
 ## Credits
 
 A massive thank you goes to **Guki92** for figuring out and implementing radio stations into the game, and also with testing this tool for many hours catching a lot of my mistakes.
+
+A thank you goes to **Mive82** for finding out how to remove the pop sound heard when opening the map.
