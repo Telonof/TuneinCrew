@@ -62,6 +62,9 @@ namespace TuneinCrew.Tools
                 pointData[0] = force;
                 area.Value = string.Join(",", pointData);
 
+                //Setup volume_db
+                customs.Root.SetElementValue("volume_db", radio.Songs[i].Volume.ToString(CultureInfo.InvariantCulture));
+
                 area = fdpFile.Root.Element("eventgroup");
                 area.Add(customs.Root);
             }

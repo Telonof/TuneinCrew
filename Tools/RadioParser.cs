@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Globalization;
+using System.Xml.Linq;
 using TuneinCrew.Utilities;
 
 namespace TuneinCrew.Tools
@@ -33,6 +34,8 @@ namespace TuneinCrew.Tools
         public string? Length { get; set; }
 
         public int Force { get; set; } = 80;
+
+        public float Volume { get; set; } = 0;
     }
 
     internal class RadioParser
@@ -123,6 +126,12 @@ namespace TuneinCrew.Tools
                 if (int.TryParse(XMLUtil.GetNodeValue(songElement, "force"), out int force))
                 {
                     song.Force = force;
+                }
+
+                string volString = XMLUtil.GetNodeValue(songElement, "volume");
+                if (volString != null && float.TryParse(volString.Replace(",", "."), CultureInfo.InvariantCulture, out float volume))
+                {
+                    song.Volume = volume;
                 }
 
                 songs.Add(song);
