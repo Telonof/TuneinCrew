@@ -40,7 +40,7 @@ namespace TuneinCrew.Tools
 
     internal class RadioParser
     {
-        public static List<Radio> ParseRadios(XElement radiosElement, string projectDirectory)
+        public static List<Radio> ParseRadios(XElement radiosElement, string projectDirectory, bool entityOnly)
         {
             List<Radio> radios = [];
 
@@ -79,7 +79,7 @@ namespace TuneinCrew.Tools
                             .ToList();
                 }
 
-                radio.Songs = ParseSongs(radioElement.Element("songs"), id);
+                radio.Songs = ParseSongs(radioElement.Element("songs"), id, entityOnly);
 
                 if (radio.Songs.Count == 0)
                     continue;
@@ -95,7 +95,7 @@ namespace TuneinCrew.Tools
             return radios;
         }
 
-        private static List<Song> ParseSongs(XElement songsElement, string id)
+        private static List<Song> ParseSongs(XElement songsElement, string id, bool entityOnly)
         {
             List<Song> songs = [];
 
@@ -124,15 +124,14 @@ namespace TuneinCrew.Tools
                 song.Length = XMLUtil.GetNodeValueOrDefault(songElement, "length");
 
                 if (int.TryParse(XMLUtil.GetNodeValue(songElement, "force"), out int force))
-                {
                     song.Force = force;
-                }
+
+                if (entityOnly)
+                    song.Force = 0;
 
                 string volString = XMLUtil.GetNodeValue(songElement, "volume");
                 if (volString != null && float.TryParse(volString.Replace(",", "."), CultureInfo.InvariantCulture, out float volume))
-                {
                     song.Volume = volume;
-                }
 
                 songs.Add(song);
             }

@@ -7,7 +7,7 @@ namespace TuneinCrew.Tools
 {
     internal class FMODBuilder
     {
-        public static void CreateFDP(Radio radio, string radioName, string fdpLocation, string assetsDirectory, bool jinglesUsed)
+        public static void CreateFDP(Radio radio, string radioName, string fdpLocation, string assetsDirectory, bool jinglesUsed, bool entityOnly)
         {
             //This is assuming no one messed up anything inside the Assets folder like the !DO_NOT_TOUCH file asked.
             XDocument fdpFile = XDocument.Load(Path.Combine(assetsDirectory, "template.fdp"));
@@ -51,6 +51,13 @@ namespace TuneinCrew.Tools
                 customs.Root.SetElementValue("guid", "{" + Guid.NewGuid() + "}");
                 area = customs.Root.Element("layer").Element("sound");
                 area.SetElementValue("name", $"/{Path.GetFileNameWithoutExtension(radio.Songs[i].Path)}");
+
+                //set music to loop mode on entity music
+                if (entityOnly)
+                {
+                    customs.Root.SetElementValue("oneshot", "No");
+                    area.SetElementValue("loopmode", "2");
+                }
 
                 //Setup full force trigger
                 string force = Math.Min(300.0, (double)radio.Songs[i].Force / 300.0).ToString("F6", CultureInfo.InvariantCulture);

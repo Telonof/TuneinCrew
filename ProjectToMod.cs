@@ -1,4 +1,5 @@
 ﻿using System.IO.Compression;
+using System.Text.Json;
 using System.Xml.Linq;
 using TuneinCrew.Tools;
 using TuneinCrew.Utilities;
@@ -9,21 +10,19 @@ namespace TuneinCrew
     {
         private const string _tempModDirectory = "mod_folder";
 
-        private readonly string _file;
+        private readonly string _file, _projectDirectory, _assetsDirectory;
 
-        private readonly string _projectDirectory;
+        private string _fmodLocation, _prefix;
 
-        private readonly string _assetsDirectory;
-        
-        private string _fmodLocation;
+        private bool _entityOnly;
 
-        private string _prefix;
-
-        public ProjectToMod(string file, string assetsDirectory)
+        public ProjectToMod(string file, string assetsDirectory, string fmodLocation, bool entityOnly)
         {
             _file = file;
             _projectDirectory = Path.GetDirectoryName(file);
             _assetsDirectory = assetsDirectory;
+            _fmodLocation = fmodLocation;
+            _entityOnly = entityOnly;
 
             Directory.CreateDirectory(_tempModDirectory);
         }
@@ -38,8 +37,10 @@ namespace TuneinCrew
                 return;
             }
 
-            //Grab the fmod executable location to then use to create FSBs.
-            _fmodLocation = StringUtil.FindAbsolutePath(XMLUtil.GetNodeValue(projectRoot, "fmod"), _projectDirectory);
+            //Grab the fmod executable location if one wasn't provided to then use to create FSBs.
+            if (string.IsNullOrWhiteSpace(_fmodLocation))
+                _fmodLocation = StringUtil.FindAbsolutePath(XMLUtil.GetNodeValue(projectRoot, "fmod"), _projectDirectory);
+            
             if (_fmodLocation == null || string.IsNullOrWhiteSpace(_fmodLocation) || !File.Exists(_fmodLocation))
             {
                 Logger.Error("FMOD file not found.");
@@ -49,7 +50,7 @@ namespace TuneinCrew
             //For Linux. Allows you prefixing the FMOD command line executable with anything needed to get it to run on the machine.
             _prefix = XMLUtil.GetNodeValue(projectRoot, "prefix");
 
-            List<Radio> radios = RadioParser.ParseRadios(projectRoot, _projectDirectory);
+            List<Radio> radios = RadioParser.ParseRadios(projectRoot, _projectDirectory, _entityOnly);
 
             if (radios.Count == 0)
             {
@@ -65,10 +66,13 @@ namespace TuneinCrew
 
         public void RadioBuilder(Radio radio)
         {
+            Dictionary<string, string> entityMap = [];
+
             string fdpLocation = Path.Combine(_projectDirectory, Path.ChangeExtension(radio.InternalRadioName, ".fdp"));
 
             //Got ID and got name, setup localization data so game actually shows the string properly.
-            XMLGenerator.GenerateLocalizationData(radio.Id, radio.Name, _assetsDirectory, _tempModDirectory);
+            if (!_entityOnly)
+                XMLGenerator.GenerateLocalizationData(radio.Id, radio.Name, _assetsDirectory, _tempModDirectory);
 
             //Open up radio binary needed to add actual radio listings to The Crew.
             XDocument radioBin = XMLGenerator.GenerateBaseRadioBinary(radio, _assetsDirectory);
@@ -87,7 +91,7 @@ namespace TuneinCrew
             //If an FDP of the same name already exists, use that one instead to allow custom FDPs.
             if (!File.Exists(fdpLocation))
             {
-                FMODBuilder.CreateFDP(radio, radio.InternalRadioName, fdpLocation, _assetsDirectory, jinglesUsed);
+                FMODBuilder.CreateFDP(radio, radio.InternalRadioName, fdpLocation, _assetsDirectory, jinglesUsed, _entityOnly);
             }
             else
             {
@@ -100,7 +104,8 @@ namespace TuneinCrew
             //For every song existing, add an entity to the game and add a listing to the radio entity.
             for (int i = 1; i <= radio.Songs.Count(); i++)
             {
-                XMLGenerator.AddSongsAndJingles(radio, radio.Songs[i - 1], i, radioBin.Root, songBin.Root.Element("add"), _assetsDirectory);
+                string id = XMLGenerator.AddSongsAndJingles(radio, radio.Songs[i - 1], i, radioBin.Root, songBin.Root.Element("add"), _assetsDirectory);
+                entityMap.Add(id, radio.Songs[i - 1].Name);
             }
 
             //Now if jingles were added to the FDP file, also add them to the entity and radio list.
@@ -109,8 +114,11 @@ namespace TuneinCrew
 
             //All files have been made, cleanup and package into an installable PitCrew mod.
             songBin.Save(Path.Combine(_tempModDirectory, $"{radio.InternalRadioName}_songs.xml"));
-            radioBin.Save(Path.Combine(_tempModDirectory, $"{radio.InternalRadioName}_radio.xml"));
-            PackageMod(radio);
+
+            if (!_entityOnly)
+                radioBin.Save(Path.Combine(_tempModDirectory, $"{radio.InternalRadioName}_radio.xml"));
+
+            PackageMod(radio, entityMap);
         }
 
         private void GenerateLogo(Radio radio, XElement radioBin)
@@ -139,16 +147,17 @@ namespace TuneinCrew
             logoValue.Value = StringUtil.Hash($"ui\\textures\\radiologos\\{radio.InternalRadioName}.xbt");
         }
 
-        private void PackageMod(Radio radio)
+        private void PackageMod(Radio radio, Dictionary<string, string> entityMap)
         {
             BigFileUtil.RepackBigFile("temp", Path.Combine(_tempModDirectory, $"{radio.InternalRadioName}_data.fat"), "TuneinCrew");
             Directory.Delete("temp", true);
 
             //Create PitCrew metadata
-            XMLGenerator.CreatePitCrewMData(radio, _assetsDirectory, _tempModDirectory);
+            XMLGenerator.CreatePitCrewMData(radio, _assetsDirectory, _tempModDirectory, _entityOnly);
 
             //Now add all files to zip and delete them.
             string outputZip = Path.Combine(_projectDirectory, $"TuneinCrew{radio.Id}.zip");
+            string outputMap = Path.Combine(_projectDirectory, $"TuneinCrew{radio.Id}_map.json");
 
             if (File.Exists(outputZip))
                 File.Delete(outputZip);
@@ -161,6 +170,10 @@ namespace TuneinCrew
                     zip.CreateEntryFromFile(file, entryName);
                 }
             }
+
+            //entity map
+            JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true };
+            File.WriteAllText(outputMap, JsonSerializer.Serialize(entityMap, options));
 
             Directory.Delete(_tempModDirectory, true);
         }

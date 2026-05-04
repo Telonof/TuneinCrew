@@ -58,7 +58,7 @@ namespace TuneinCrew.Tools
             return songBinary;
         }
 
-        public static void AddSongsAndJingles(Radio radio, Song song, int songNumber, XElement radioBinary, XElement songBinary, string assetsDirectory)
+        public static string AddSongsAndJingles(Radio radio, Song song, int songNumber, XElement radioBinary, XElement songBinary, string assetsDirectory)
         {
             string uniqueName = $"{radio.Id}_zz";
             string eventName = "Jingle";
@@ -96,7 +96,7 @@ namespace TuneinCrew.Tools
 
                 field = XMLUtil.FindType(radioBinary, "field", "name", "Jingle");
                 field.Value = uniqueName;
-                return;
+                return uniqueName;
             }
 
             songBinary.Add(doc.Root);
@@ -124,9 +124,11 @@ namespace TuneinCrew.Tools
 
             field = XMLUtil.FindType(radioBinary, "object", "name", "Items");
             field.Add(doc.Root);
+
+            return uniqueName;
         }
 
-        public static void CreatePitCrewMData(Radio radio, string assetsDirectory, string outputFolder)
+        public static void CreatePitCrewMData(Radio radio, string assetsDirectory, string outputFolder, bool entityOnly)
         {
             XDocument mdata = XDocument.Load(Path.Combine(assetsDirectory, "mdata.xml"));
             mdata.Root.Element("names").Element("English").Value = radio.Name;
@@ -142,16 +144,19 @@ namespace TuneinCrew.Tools
             mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_songs.xml");
             mdata.Root.Element("files").Add(new XElement(mdataFile));
 
-            //radio listing
-            mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_radio.xml");
-            mdata.Root.Element("files").Add(new XElement(mdataFile));
+            if (!entityOnly)
+            {
+                //radio listing
+                mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_radio.xml");
+                mdata.Root.Element("files").Add(new XElement(mdataFile));
 
-            //localization files
-            mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_loc_tat.xml");
-            mdata.Root.Element("files").Add(new XElement(mdataFile));
+                //localization files
+                mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_loc_tat.xml");
+                mdata.Root.Element("files").Add(new XElement(mdataFile));
 
-            mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_loc_string.xml");
-            mdata.Root.Element("files").Add(new XElement(mdataFile));
+                mdataFile.SetAttributeValue("loc", $"{radio.InternalRadioName}_loc_string.xml");
+                mdata.Root.Element("files").Add(new XElement(mdataFile));
+            }
 
             mdata.Save(Path.Combine(outputFolder, $"TuneinCrew{radio.Id}.mdata"));
         }
