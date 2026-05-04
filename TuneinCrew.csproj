@@ -1,10 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>A semi-automatic radio creator for The Crew.</Description>
+    
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>1.08</Version>
+    <Authors>FTIW</Authors>
+	  <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +22,10 @@
     <Compile Remove="Gibbed.Dunia2\**" />
     <EmbeddedResource Remove="Gibbed.Dunia2\**" />
     <None Remove="Gibbed.Dunia2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.7" />
   </ItemGroup>
 
 </Project>
