@@ -116,10 +116,12 @@ namespace TuneinCrew.Tools
             {
                 FileName = fmodLocation,
                 Arguments = fmodArgs,
-                UseShellExecute = true,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true                
             };
 
             Process process = Process.Start(startInfo);
+            Logger.Info(process.StandardOutput.ReadToEnd());
             process.WaitForExit();
 
             //Move the fev and fsb to the folder to pack into a DAT.
