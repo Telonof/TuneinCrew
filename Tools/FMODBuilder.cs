@@ -128,7 +128,11 @@ namespace TuneinCrew.Tools
             };
 
             Process process = Process.Start(startInfo);
-            Logger.Info(process.StandardOutput.ReadToEnd());
+            Logger.Info("Building FSB/FEV...");
+            process.OutputDataReceived += (sender, args) => Console.WriteLine(args.Data);
+            process.ErrorDataReceived += (sender, args) => Console.WriteLine(args.Data);
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
             process.WaitForExit();
 
             //Move the fev and fsb to the folder to pack into a DAT.
