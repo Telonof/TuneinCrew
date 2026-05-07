@@ -86,7 +86,7 @@ namespace TuneinCrew.Tools
             field.Value = StringUtil.ConvertToHexString($"{radio.InternalRadioName}/{eventName}", -1);
 
             field = XMLUtil.FindType(doc.Root, "field", "name", "ProjectPathId");
-            field.Value = StringUtil.Hash($"sound\\{radio.InternalRadioName}.fev");
+            field.Value = StringUtil.Hash($"sound\\{radio.InternalRadioName}.fev".ToLowerInvariant());
 
             if (songNumber == -1)
             {

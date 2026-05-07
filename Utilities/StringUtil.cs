@@ -29,7 +29,7 @@ namespace TuneinCrew.Utilities
 
         public static string Hash(string data)
         {
-            ulong hash = CRC64.Hash(data.ToLower(), true);
+            ulong hash = CRC64.Hash(data, true);
             byte[] bytes = BitConverter.GetBytes(hash);
             return BitConverter.ToString(bytes).Replace("-", "");
         }

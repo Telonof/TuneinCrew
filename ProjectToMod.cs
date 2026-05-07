@@ -140,11 +140,11 @@ namespace TuneinCrew
             //Save XBT to temp folder
             string radioLogoPath = Path.Combine("temp", "ui", "textures", "radiologos");
             Directory.CreateDirectory(radioLogoPath);
-            File.WriteAllBytes(Path.Combine(radioLogoPath, $"{radio.InternalRadioName}.xbt".ToLower()), data.ToArray());
+            File.WriteAllBytes(Path.Combine(radioLogoPath, $"{radio.InternalRadioName}.xbt".ToLowerInvariant()), data.ToArray());
 
             //Set logo value inside radio binary.
             XElement logoValue = XMLUtil.FindType(radioBin, "field", "name", "Logo");
-            logoValue.Value = StringUtil.Hash($"ui\\textures\\radiologos\\{radio.InternalRadioName}.xbt");
+            logoValue.Value = StringUtil.Hash($"ui\\textures\\radiologos\\{radio.InternalRadioName}.xbt".ToLowerInvariant());
         }
 
         private void PackageMod(Radio radio, Dictionary<string, string> entityMap)
